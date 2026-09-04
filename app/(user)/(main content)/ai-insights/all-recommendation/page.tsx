@@ -113,12 +113,12 @@ export default function AllRecommendationsPage() {
                         <div className="bg-blue-100/50 p-6 rounded-2xl border border-blue-100">
                             <h5 className="font-bold text-blue-900 text-sm mb-4">Recommended Actions</h5>
                             <div className="space-y-3 mb-6">
-                                {(plan.actions || plan.actions_to_do)?.map((step, j) => (
+                                {(plan.actions || plan.actions_to_do)?.map((step: any, j: number) => (
                                     <div key={j} className="flex items-center gap-3">
                                         <div className="flex items-center justify-center size-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold shrink-0">
                                             {j + 1}
                                         </div>
-                                        <span className="text-sm text-gray-700">{step}</span>
+                                        <span className="text-sm text-gray-700">{typeof step === 'object' ? (step.action || step.description || JSON.stringify(step)) : step}</span>
                                     </div>
                                 ))}
                             </div>

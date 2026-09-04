@@ -518,11 +518,17 @@ export default function ReportsPage() {
                                 <h3 className="font-bold text-gray-900 mb-3">6. AI Recommendations</h3>
                                 <div className="space-y-3">
                                     {reportData?.ai_recommendations && reportData.ai_recommendations.length > 0 ? (
-                                        reportData.ai_recommendations.map((rec, i) => (
+                                        reportData.ai_recommendations.map((rec: any, i: number) => (
                                             <div key={i} className="p-4 bg-blue-50/50 border border-blue-100 rounded-xl">
-                                                <h4 className="text-sm font-bold text-blue-900">{rec.title}</h4>
-                                                <p className="text-xs text-blue-800/80 mt-1 leading-relaxed">{rec.description}</p>
-                                                <p className="text-[10px] font-bold text-blue-600 mt-2 uppercase tracking-wider">{rec.estimated_impact}</p>
+                                                <h4 className="text-sm font-bold text-blue-900">
+                                                    {typeof rec === 'object' ? (rec.title || rec.recommendation || JSON.stringify(rec)) : rec}
+                                                </h4>
+                                                {typeof rec === 'object' && rec.description && (
+                                                    <p className="text-xs text-blue-800/80 mt-1 leading-relaxed">{rec.description}</p>
+                                                )}
+                                                {typeof rec === 'object' && rec.estimated_impact && (
+                                                    <p className="text-[10px] font-bold text-blue-600 mt-2 uppercase tracking-wider">{rec.estimated_impact}</p>
+                                                )}
                                             </div>
                                         ))
                                     ) : (
@@ -536,12 +542,21 @@ export default function ReportsPage() {
                                 <h3 className="font-bold text-gray-900 mb-3">7. Recommended Action Plan</h3>
                                 <div className="space-y-2">
                                     {reportData?.action_plan && reportData.action_plan.length > 0 ? (
-                                        reportData.action_plan.map((step, i) => (
+                                        reportData.action_plan.map((step: any, i: number) => (
                                             <div key={i} className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
                                                 <div className="flex items-center justify-center size-5 rounded-full bg-blue-600 text-white text-xs flex-shrink-0">
-                                                    {i + 1}
+                                                    {typeof step === 'object' ? (step.step ?? i + 1) : i + 1}
                                                 </div>
-                                                <span className="text-sm text-gray-700 font-medium">{step}</span>
+                                                <div className="text-sm text-gray-700 font-medium">
+                                                    {typeof step === 'object' ? (
+                                                        <span>
+                                                            {step.action || step.description || JSON.stringify(step)}
+                                                            {step.timeline && <span className="ml-2 text-xs text-gray-400 font-normal">({step.timeline})</span>}
+                                                        </span>
+                                                    ) : (
+                                                        <span>{step}</span>
+                                                    )}
+                                                </div>
                                             </div>
                                         ))
                                     ) : (
