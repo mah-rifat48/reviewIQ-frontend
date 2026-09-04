@@ -1,0 +1,9 @@
+services:
+  next-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rifat48/reviewiq-frontend:latest
+    ports:
+      - "3000:3000"
+    restart: always

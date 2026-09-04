@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --auth-subtitle-color: #22D3EE;
+  --primary-brand: #22D3EE;
+  --primary-brand-dark: #06B6D4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-auth-subtitle-color: var(--auth-subtitle-color);
+
+  /* Global Brand Accent Overrides mapped to Cyan Palette */
+  --color-blue-50: #ecfeff;
+  --color-blue-100: #cffafe;
+  --color-blue-200: #a5f3fc;
+  --color-blue-300: #67e8f9;
+  --color-blue-400: #22d3ee;
+  --color-blue-500: #06b6d4;
+  --color-blue-600: #22D3EE;
+  --color-blue-700: #0891b2;
+  --color-blue-800: #0e7490;
+  --color-blue-900: #155e75;
+  --color-blue-950: #164e63;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --auth-subtitle-color: #22D3EE;
+    --primary-brand: #22D3EE;
+    --primary-brand-dark: #06B6D4;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+input,
+textarea,
+select {
+  color: #000000 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+
+.user-auth-bg {
+  background: linear-gradient(180deg, #C9F3FE 0%, #FFF 100%);
+  box-shadow: 0 15px 40px 0 rgba(65, 229, 170, 0.10);
+}
+
+/* Hide scrollbar but keep scrolling functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* Custom thin scrollbar */
+.custom-thin-scrollbar {
+  scrollbar-width: thin !important;
+  scrollbar-color: #E2E8F0 transparent !important;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #E2E8F0 !important;
+  border-radius: 10px !important;
+}
+
+.custom-thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1 !important;
+}
+
+@utility admin-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important;
+  box-shadow: none !important;
+}
+
+.admin-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important; /* Colors/Blue/200 */
+  box-shadow: none !important; /* No shadow */
+}
+
+@utility user-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important;
+  box-shadow: none !important;
+}
+
+.user-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DBEAFE !important; /* Colors/Blue/100 */
+  box-shadow: none !important; /* No shadow */
+}
