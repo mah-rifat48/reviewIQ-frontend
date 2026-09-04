@@ -187,7 +187,7 @@ export default function AIInsightsPage() {
                 {/* Business Picture */}
                 <div className="w-full md:w-[400px] h-48 rounded-2xl overflow-hidden shadow-lg relative group">
                     <img
-                        src={insights.business_picture.photo_url || "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"}
+                        src={insights?.business_picture?.photo_url || "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"}
                         alt={selectedBusiness || "Business Image"}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
